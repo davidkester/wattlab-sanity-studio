@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-export default defineType({
+export const resultsBlockSection = defineType({
     name: "resultsBlockSection",
     title: "Results Block",
     type: "object",

@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-export default defineType({
+export const vacanciesListSection = defineType({
     name: "vacanciesListSection",
     title: "Vacancies List",
     type: "object",

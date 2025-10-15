@@ -1,7 +1,7 @@
 import { defineType, defineField } from "sanity";
-import videoHeroSection from "./objects/videoHeroSection";
 
-export default defineType({
+
+export const pageType = defineType({
     name: "page",
     type: "document",
     title: "Page",
@@ -25,10 +25,10 @@ export default defineType({
                 { type: "faqSection"},
                 { type: "newsSection" },
                 { type: "videoHeroSection" },
-                { type: "resultsBlockSection"}
-            ],
-            // optional rule to limit heroes:
-            // validation: r => r.custom(arr => (arr?.filter(s=>s._type==="heroSection").length ?? 0) <= 1 || "Max 1 hero per page"),
+                { type: "resultsBlockSection"},
+                { type: "stepsTimelineSection"},
+                { type: "regulationImpactBlockSection"}
+            ]
         }),
     ],
 });

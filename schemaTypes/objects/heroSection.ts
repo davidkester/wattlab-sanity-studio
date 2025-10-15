@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-export default defineType({
+export const heroSection = defineType({
     name: "heroSection",
     type: "object",
     title: "Hero Section",
@@ -8,8 +8,9 @@ export default defineType({
         defineField({
             name: "title",
             type: "string",
-            description: "Add a short and catchy title.",
-            validation: r => r.required() }),
+            description: "Use \\n to split into two lines",
+            validation: (r) => r.required(),
+        }),
         defineField({
             name: "subtitle",
             type: "text",
@@ -18,17 +19,21 @@ export default defineType({
         defineField({
             name: "primaryCtaLabel",
             type: "string",
-            description: "Add a text for the button.",
+            description: "Add text for the button.",
         }),
         defineField({
             name: "primaryCtaHref",
             type: "string",
             description: "Choose a page such as 'deep-sea' or section such as 'projects#ContactForm'",
         }),
+
         defineField({
-            name: "backgroundImage",
-            type: "image",
-            description: "Add a supporting image",
-            options: { hotspot: true } }),
+            name: "backgroundShared",
+            title: "Background (Shared Image)",
+            type: "reference",
+            to: [{ type: "sharedImage" }],
+            validation: (r) => r.required(),
+            description: "Select an image from the Shared Image library.",
+        }),
     ],
 });

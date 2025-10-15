@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-export default defineType({
+export const splitHeroSection = defineType({
     name: "splitHeroSection",
     title: "Split Hero Section",
     type: "object",
@@ -9,13 +9,13 @@ export default defineType({
             name: "label",
             type: "string",
             title: "Label",
-            description: "Small label shown above the heading (e.g., 'Solar Energy')",
+            description: "Small label above the heading (e.g., 'Solar Energy')",
         }),
         defineField({
             name: "heading",
             type: "string",
             title: "Heading",
-            description: "Highlight a word with the primary color by writing it like: ~example~",
+            description: "Use ~word~ to highlight; \\n for line break.",
         }),
         defineField({
             name: "description",
@@ -41,20 +41,32 @@ export default defineType({
             title: "CTA Link",
             hidden: ({ parent }) => !parent?.showCta,
         }),
+
         defineField({
-            name: "image",
-            type: "image",
-            title: "Image",
-            options: { hotspot: true },
-            fields: [
-                {
-                    name: "alt",
-                    type: "string",
-                    title: "Alt Text",
-                    description: "For screen readers & SEO",
-                },
-            ],
+            name: "sharedImage",
+            title: "Image (Shared)",
+            type: "reference",
+            to: [{ type: "sharedImage" }],
+            validation: (r) => r.required(),
+            description: "Select an image from the Shared Image library.",
         }),
+
+        defineField({
+            name: "imageHeight",
+            type: "number",
+            title: "Image Height (px)",
+            description: "Leave empty to use the default (520px).",
+        }),
+
+
+        defineField({
+            name: "disableShadow",
+            type: "boolean",
+            title: "Disable Image Shadow?",
+            description: "Turn off the drop shadow on the image",
+            initialValue: false,
+        }),
+
         defineField({
             name: "reverse",
             type: "boolean",
@@ -71,12 +83,9 @@ export default defineType({
         }),
     ],
     preview: {
-        select: { title: "heading", media: "image" },
+        select: { title: "heading", media: "sharedImage.image" },
         prepare({ title, media }) {
-            return {
-                title: title || "Split Hero Section",
-                media,
-            };
+            return { title: title || "Split Hero Section", media };
         },
     },
 });

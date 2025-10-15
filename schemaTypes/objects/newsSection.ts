@@ -1,8 +1,8 @@
 import { defineType, defineField } from "sanity";
 
-export default defineType({
+export const newsSection = defineType({
     name: "newsSection",
-    title: "Page Section",
+    title: "Page News Section",
     type: "object",
     fields: [
         defineField({ name: "title", type: "string", initialValue: "Latest news" }),

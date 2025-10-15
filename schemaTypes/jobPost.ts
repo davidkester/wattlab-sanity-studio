@@ -1,8 +1,8 @@
 import { defineType, defineField } from "sanity";
 
-export default defineType({
+export const jobPost = defineType({
     name: "jobPost",          // <-- MUST match the reference name
-    title: "Page",
+    title: "Job Post",
     type: "document",
     fields: [
         defineField({ name: "title", type: "string", validation: r => r.required() }),
