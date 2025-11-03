@@ -24,6 +24,12 @@ export const splitHeroSection = defineType({
             rows: 4,
         }),
         defineField({
+          name: 'body',
+          type: 'array',
+          of: [{type: 'block'}],
+          options: {},
+        }),
+        defineField({
             name: "showCta",
             type: "boolean",
             title: "Show Call-to-Action Button?",
@@ -41,7 +47,6 @@ export const splitHeroSection = defineType({
             title: "CTA Link",
             hidden: ({ parent }) => !parent?.showCta,
         }),
-
         defineField({
             name: "sharedImage",
             title: "Image (Shared)",
@@ -57,8 +62,6 @@ export const splitHeroSection = defineType({
             title: "Image Height (px)",
             description: "Leave empty to use the default (520px).",
         }),
-
-
         defineField({
             name: "disableShadow",
             type: "boolean",
@@ -66,7 +69,6 @@ export const splitHeroSection = defineType({
             description: "Turn off the drop shadow on the image",
             initialValue: false,
         }),
-
         defineField({
             name: "reverse",
             type: "boolean",

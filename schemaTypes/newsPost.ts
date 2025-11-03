@@ -21,8 +21,6 @@ export default defineType({
             initialValue: () => new Date().toISOString(),
             validation: r => r.required(),
         }),
-
-        // 🔹 Rich, flexible article body
         defineField({
             name: "body",
             title: "Body",
