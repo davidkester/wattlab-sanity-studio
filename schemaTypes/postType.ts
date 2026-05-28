@@ -43,6 +43,7 @@ export const postType = defineType({
         list: [
           {title: "Blog Post", value: "post"},
           {title: "Press Release", value: "press-release"},
+          {title: "External", value: "external"},
         ]
       },
       validation: (Rule) => Rule.required(),
